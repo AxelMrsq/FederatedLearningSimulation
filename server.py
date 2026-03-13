@@ -1,15 +1,44 @@
 from model import global_model
 
+import os
+#https://docs.python.org/3/library/os.html
+
+
+
+# aggregator class represent the server with the global model
 class Aggregator:
+
+
     def __init__(self):
+
         #set up a global model and its initial weights
         self.model = global_model()
 
-    def get_global_weights(self):
-        #return the global weights
-        return self.model.get_weights()
+        #training iteration
+        self.iter = 0
 
-    def save_global_weights(self):
-        # save the global weights
+
+    # def get_global_weights(self): #return the global weights
+
+    #     return self.model.get_weights()
+    # get npy format of the model weights
+
+
+    def save_global_weights(self): # save the global weights iteration
+        
+        # set the path of the weights iteration folder
+        path = "./global_weights_iter"
+
+        #https://docs.python.org/3/library/os.path.html#os.path.exists
+        if os.path.exist != True :
+
+            #https://docs.python.org/3/library/os.html#os.makedirs
+            os.makedirs(path)
+
         #https://www.tensorflow.org/api_docs/python/tf/keras/Model#save_weights
-        self.model.save_weights("data.weights.h5")
+        self.model.save_weights(f"./global_weights_iter/iter{self.iter}.weights.h5")
+        
+        #update training iteration
+        self.iter += 0
+
+
