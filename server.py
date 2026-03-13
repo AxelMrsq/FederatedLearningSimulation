@@ -30,7 +30,7 @@ class Aggregator:
         path = "./global_weights_iter"
 
         #https://docs.python.org/3/library/os.path.html#os.path.exists
-        if os.path.exist != True :
+        if os.path.exists(path) != True :
 
             #https://docs.python.org/3/library/os.html#os.makedirs
             os.makedirs(path)
