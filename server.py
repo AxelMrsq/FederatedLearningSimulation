@@ -10,7 +10,9 @@ class Aggregator:
 
 
     def __init__(self):
-
+        print("")
+        print("")
+        print(f"Creating aggregator")
         #set up a global model and its initial weights
         self.model = global_model()
 
@@ -34,7 +36,9 @@ class Aggregator:
 
             #https://docs.python.org/3/library/os.html#os.makedirs
             os.makedirs(path)
-
+        print("")
+        print("")
+        print(f"Saving weights of aggregator for the iteration {self.iter} in {path}")
         #https://www.tensorflow.org/api_docs/python/tf/keras/Model#save_weights
         self.model.save_weights(f"./global_weights_iter/iter{self.iter}.weights.h5")
         
