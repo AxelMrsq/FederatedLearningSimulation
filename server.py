@@ -46,20 +46,23 @@ class Aggregator:
         self.iter += 1
     
     def aggregate_weights(self, client1_weights, client2_weights) : #aggregate the weights of the two clients with a mean
-
+           
+        # create an empty weigths list
         aggregated_weights = []
         for weights_layer in client1_weights :
             aggregated_weights.append(numpy.zeros_like(weights_layer))
 
+        # summing layers
         for i in range(len(aggregated_weights)) :
             aggregated_weights[i] = client2_weights[i] + client1_weights[i]
         
+        #averaging layers
         final_weights = []
         for weights_layer in aggregated_weights :
             final_weights.append(weights_layer / 2)
         
         #https://www.tensorflow.org/api_docs/python/tf/keras/Layer#set_weights
+        # setting the new weights results as the global weigths
         self.model.set_weights(final_weights)
         
-
-
+    

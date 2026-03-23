@@ -14,7 +14,6 @@ class Client:
 
     def __init__(self, name): #initiate a client
         
-        
         # set up a edge model archi 
         self.model = global_model()
 
@@ -86,3 +85,11 @@ class Client:
         
         # save new local parameters
         self.save_edge_weights()
+
+        
+    def client_evaluation(self, test_set) : # evaluate the model on a test set
+
+        # print the results
+        # https://www.tensorflow.org/api_docs/python/tf/keras/Model#evaluate
+        print(f"{self.name} model performance {self.model.evaluate(test_set)}")
+    
